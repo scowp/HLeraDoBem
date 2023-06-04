@@ -1,9 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import Cadastro from './src/screens/Cadastro';
 import Login from './src/screens/Login';
 import Home from './src/screens/Home';
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (

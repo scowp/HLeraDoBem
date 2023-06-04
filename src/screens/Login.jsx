@@ -1,11 +1,11 @@
 import { View, Text, Button, StyleSheet } from "react-native";
 
-export default function Login(){
+export default function Login({navigation}){
     return (
         <View >
             <Text>Login</Text>
-            <Button onPress={()=> navigation.navigate("Home")}>logar</Button>
-            <Text>Ainda não tem uma conta? <Button onPress={()=> navigation.navigate("Cadastro")}>Clique aqui.</Button></Text>
+            <Button onPress={()=> navigation.navigate("Home")} title="Logar"/>
+            <Text>Ainda não tem uma conta? <Button onPress={()=> navigation.navigate("Cadastro")} title="Clique aqui."/></Text>
         </View>
     )
 }
