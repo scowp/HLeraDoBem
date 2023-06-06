@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 
-export default function Ajuste(){
+export default function Ajustes(){
     return (
         <View>
             <Text>Ajuste</Text>
