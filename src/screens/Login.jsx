@@ -28,7 +28,7 @@ export default function Login({navigation}) {
             />
 
             <TouchableOpacity style={styles.button} onPress={async () => {console.log(validarLogin("mateus@gmail.com", "mateus123"))}}>
-                    <Text style={{ color: "white", fontWeight: 600, fontSize: 16 }}>Cadastrar</Text>
+                    <Text style={{ color: "white", fontWeight: 600, fontSize: 16 }}>Entrar</Text>
             </TouchableOpacity>
         </View>
     )

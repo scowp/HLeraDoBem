@@ -1,53 +1,30 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, Button, StyleSheet, TextInput, TouchableOpacity, ScrollView } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 import { validarLogin } from '../context/integration/Login';
 
-export default function Cadastro({ navigation }) {
+export default function Cadastro(props) {
 
-    const [nome, setNome] = React.useState("");
-    const [cpf, setCPF] = React.useState("");
-    const [rg, setRG] = React.useState("");
-    const [dataNsc, setDataNsc] = React.useState("");
+    const navigation = useNavigation();
 
+    
     return (
-        <View style={styles.container}>
-            <View style={{ width: 320, marginBottom: 40 }}>
-                <Text style={styles.titulo}>Preencha as informações para entrar na plataforma.</Text>
+        <ScrollView
+            automaticallyAdjustKeyboardInsets={true}
+            contentContainerStyle={{
+                flex: 1
+            }}
+        >
+            <View style={styles.container}>
+                <View style={{ width: 320, marginBottom: 40 }}>
+                    <Text style={styles.titulo}>{props.titulo}</Text>
+                </View>
+                {props.children}
+                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate(props.proximaPagina)}>
+                    <Text style={{ color: "white", fontWeight: 600, fontSize: 16 }}>Avançar</Text>
+                </TouchableOpacity>
             </View>
-            <Text style={styles.label}>Nome Completo</Text>
-            <TextInput
-                style={styles.input}
-                onChangeText={setNome}
-                value={nome}
-                placeholder="Digite aqui..."
-            />
-            <Text style={styles.label}>CPF</Text>
-            <TextInput
-                style={styles.input}
-                onChangeText={setCPF}
-                value={cpf}
-                placeholder="Digite aqui..."
-            />
-            <Text style={styles.label}>Registro Geral</Text>
-            <TextInput
-                style={styles.input}
-                onChangeText={setRG}
-                value={rg}
-                placeholder="Digite aqui..."
-            />
-            <Text style={styles.label}>Data de nascimento</Text>
-            <TextInput
-                style={styles.input}
-                onChangeText={setDataNsc}
-                value={dataNsc}
-                placeholder="Digite aqui..."
-            />
-
-            {/* <TouchableOpacity style={styles.button} onPress={() => validarLogin(user, senha).authorized ? navigation.navigate("Cadastro") : console.log("error")}> */}
-            <TouchableOpacity style={styles.button} onPress={() => console.log(validarLogin("mateus@gmail.com", "mateus123"))}>
-                <Text style={{ color: "white", fontWeight: 600, fontSize: 16 }}>Avançar</Text>
-            </TouchableOpacity>
-        </View>
+        </ScrollView >
     )
 }
 
