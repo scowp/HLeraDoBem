@@ -1,19 +1,22 @@
 import axios from "axios";
+import { Buffer } from "buffer";
+
+import {URL_LINK, BASIC_AUTH_USER, BASIC_AUTH_PASS} from '@env'
 
 const config = {
     baseURL: process.env.URL_LINK,
-    auth: {
-        username: process.env.BASIC_AUTH_USER,
-        password: process.env.BASIC_AUTH_PASS
+    headers: {
+        Authorization: `Basic ${Buffer.from(`${process.env.BASIC_AUTH_USER}:${process.env.BASIC_AUTH_PASS}`).toString("base64")}`
     }
 };
+
 
 export async function validarLogin(user, senha) {
     try {
         const response = await axios.get(`/login?user=${user}&senha=${senha}`, config);
         return response.data;
     } catch (error) {
-        return error.response.data;
+        return error;
     }
 }
 

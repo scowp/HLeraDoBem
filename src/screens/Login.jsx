@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import { validarLogin } from '../context/integration/Login';
+import { listarUsuarios } from '../context/integration/Usuario';
 
 export default function Login({navigation}) {
 
@@ -24,10 +25,11 @@ export default function Login({navigation}) {
                 style={styles.input}
                 onChangeText={setSenha}
                 value={senha}
+                secureTextEntry={true}
                 placeholder="Senha"
             />
 
-            <TouchableOpacity style={styles.button} onPress={async () => {console.log(validarLogin("mateus@gmail.com", "mateus123"))}}>
+            <TouchableOpacity style={styles.button} onPress={async () => {console.log(await validarLogin(user, senha))}}>
                     <Text style={{ color: "white", fontWeight: 600, fontSize: 16 }}>Entrar</Text>
             </TouchableOpacity>
         </View>
