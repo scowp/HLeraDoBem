@@ -11,12 +11,7 @@ const config = {
 export async function validarLogin(user, senha) {
     try {
         const response = await axios.get(`/login?user=${user}&senha=${senha}`, config);
-        const status = response.data.status;
-        if (status == 200) {
-            return response.data.message;
-        } else {
-            return response.data;
-        }
+        return response.data;
     } catch (error) {
         return error.response.data;
     }

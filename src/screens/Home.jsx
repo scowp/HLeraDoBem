@@ -4,6 +4,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import Ajustes from './Ajustes';
 import Pesquisa from './Pesquisa';
+import Card from '../Components/Card';
+import CardOng from '../Components/CardOng';
 
 const Tab = createBottomTabNavigator();
 
@@ -11,19 +13,18 @@ const Tab = createBottomTabNavigator();
 export default function Home() {
     return (
         <View style={styles.container}>
-            <View style={{marginBottom: 40}}>
+            <View style={{marginBottom: 30, width: 310}}>
                 <Text style={styles.titulo}>Suas inscrições em campanhas</Text>
                 <Text style={styles.vazio}>Ops! Aparentemente você não está inscrito em nenhuma campanha :(</Text>
             </View>
             <View style={{marginBottom: 10}}>
                 <Text style={styles.titulo}>Campanhas disponíveis</Text>
-                <View style={styles.card}>
-                    <Ionicons name="shirt" size={24} color="white" style={styles.cardIcone}/>
-                    <View>
-                        <Text style={styles.cardTitulo}>Campanha de roupas</Text>
-                        <Text><Text style={styles.cardTitulo}>0</Text>itens disponíveis</Text>
-                    </View>
-                </View>
+                <Card titulo="Campanha de roupas" value={0}/>
+                <Card titulo="Campanha de alimentos" value={0}/>
+            </View>
+            <View style={{marginBottom: 10}}>
+                <Text style={styles.titulo}>Campanhas disponíveis</Text>
+                <CardOng titulo="Hlera do bem"/>
             </View>
         </View>
     )
@@ -33,16 +34,15 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        alignItems: 'flex-start',
+        alignItems: 'center',
         justifyContent: 'flex-start',
         padding:30,
-        paddingTop: 50,
     },
 
     titulo: {
         fontSize: 18,
         fontWeight: 700,
-        marginBottom: 10
+        marginBottom: 10,
     },
 
     vazio: {
@@ -51,23 +51,5 @@ const styles = StyleSheet.create({
         color: "#8E8E8E"
     },
 
-    card: {
-        padding: 10,
-        backgroundColor: "#558CDE",
-        display: "flex",
-        flexDirection: "row",
-        borderRadius: 10
-    },
-
-    cardIcone: {
-        backgroundColor: "#2674E9",
-        padding: 30,
-        
-    },
-
-    cardTitulo: {
-        color: "white",
-        fontSize: 16,
-        fontWeight: 700
-    },
+ 
 });
