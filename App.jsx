@@ -1,4 +1,5 @@
-import Routes from './src/Routes/Routes';
+import Routes from "./src/Rotas/Routes";
+
 
 export default function App() {
   return (

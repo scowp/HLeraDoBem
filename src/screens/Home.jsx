@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-        alignItems: 'start',
-        justifyContent: 'start',
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
         padding:30,
         paddingTop: 50,
     },
