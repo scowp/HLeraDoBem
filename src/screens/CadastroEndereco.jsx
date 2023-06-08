@@ -54,6 +54,17 @@ export default function CadastroEndereco({ navigation }) {
         }
     }
 
+    const getDataInfo = async () => {
+        try {
+            const jsonValue = await AsyncStorage.getItem('@info')
+            return jsonValue != null ? JSON.parse(jsonValue) : null;
+        } catch (e) {
+            // error reading value
+        }
+    }
+
+    
+
     return (
         <Cadastro proximaPagina="Cadastro3" titulo="Aonde você mora? :)" >
             <Text style={styles.label}>Código de endereço postal (CEP)</Text>
@@ -130,6 +141,7 @@ export default function CadastroEndereco({ navigation }) {
                     navigation.navigate("Cadastro3")
                 }
                 await storeData(ende)
+                console.log(await getDataInfo())
             }}>
                 <Text style={{ color: "white", fontWeight: 600, fontSize: 16 }}>Avançar</Text>
             </TouchableOpacity>

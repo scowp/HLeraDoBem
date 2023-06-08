@@ -3,6 +3,7 @@ import { TextInputMask } from 'react-native-masked-text'
 import React from 'react';
 import Cadastro from "./Cadastro";
 import { inserirUsuario } from "../context/integration/Usuario";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function CadastroDados({ navigation }) {
 
@@ -110,9 +111,10 @@ export default function CadastroDados({ navigation }) {
                 if (salvou()) {
                     navigation.navigate("HomeScreen")
                     await inserirUsuario(await getDataInfo(), dados ,await getDataEndereco())
-                    console.log(getDataInfo())
+                    console.log(await getDataInfo())
                     console.log(dados)
-                    console.log(getDataEndereco())
+                    console.log(await getDataEndereco())
+                    
                 }
             }}>
                 <Text style={{ color: "white", fontWeight: 600, fontSize: 16 }}>Avançar</Text>

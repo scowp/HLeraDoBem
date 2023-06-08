@@ -6,9 +6,9 @@ export default function Ajustes() {
     return (
         <View style={styles.container}>
             <View style={styles.user}>
-                <Text style={styles.username}>Mateus Feio</Text>
+                <Text style={styles.username}>Matheus G.</Text>
                 <Text style={styles.userinfo}>+55 11 12345-1234</Text>
-                <Text style={styles.userinfo}>mateus@gmail.com</Text>
+                <Text style={styles.userinfo}>nome@hlera.com</Text>
             </View>
             <Text style={styles.titulo}>Editar informações</Text>
             <TouchableOpacity style={styles.button}>
