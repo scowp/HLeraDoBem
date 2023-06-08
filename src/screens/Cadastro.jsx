@@ -5,9 +5,6 @@ import { validarLogin } from '../context/integration/Login';
 
 export default function Cadastro(props) {
 
-    const navigation = useNavigation();
-
-    
     return (
         <ScrollView
             automaticallyAdjustKeyboardInsets={true}
@@ -20,12 +17,10 @@ export default function Cadastro(props) {
                     <Text style={styles.titulo}>{props.titulo}</Text>
                 </View>
                 {props.children}
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate(props.proximaPagina)}>
-                    <Text style={{ color: "white", fontWeight: 600, fontSize: 16 }}>Avançar</Text>
-                </TouchableOpacity>
             </View>
         </ScrollView >
     )
+
 }
 
 const styles = StyleSheet.create({
