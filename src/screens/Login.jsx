@@ -33,15 +33,10 @@ export default function Login({ navigation }) {
             <TouchableOpacity style={styles.button} onPress={async () => {
                 const validado = await validarLogin(user, senha)
                 if (validado.authorized){
-<<<<<<< HEAD
-                    navigation.navigate("HomeScreen")
+                    navigation.navigate("Home")
                     console.log("entrou")
                 } else {
                     console.log("não entrou")
-=======
-                    navigation.navigate("Home")
-                    console.log("entrou")
->>>>>>> 2478f867c9d5cc0dfe578c1e8369879e6fac531a
                 }
             }}>
                 <Text style={{ color: "white", fontWeight: 600, fontSize: 16 }}>Entrar</Text>

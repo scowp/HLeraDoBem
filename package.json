@@ -10,11 +10,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
-<<<<<<< HEAD
     "@react-native-async-storage/async-storage": "^1.19.1",
-=======
-    "@react-native-async-storage/async-storage": "^1.18.2",
->>>>>>> 2478f867c9d5cc0dfe578c1e8369879e6fac531a
     "@react-navigation/bottom-tabs": "^6.5.7",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",

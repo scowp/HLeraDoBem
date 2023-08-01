@@ -11,7 +11,7 @@ export default function MyTabs() {
     return (
         <Tab.Navigator
             tabBarOptions={{
-                showLabel: false
+                showLabel: false,
             }}
             screenOptions={({ route }) => ({
                 tabBarStyle: {

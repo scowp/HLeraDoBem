@@ -8,6 +8,7 @@ import Inicio from "../screens/Inicio";
 import CadastroInfos from "../screens/CadastroInfos";
 import CadastroEndereco from "../screens/CadastroEndereco";
 import CadastroDados from "../screens/CadastroDados";
+import Home from "../screens/Home";
 
 const Stack = createStackNavigator();
 
@@ -20,11 +21,7 @@ export default function Routes() {
         <Stack.Screen name="Cadastro2" component={CadastroEndereco} options={{headerShown: true}}/>
         <Stack.Screen name="Cadastro3" component={CadastroDados} options={{headerShown: true}}/>
         <Stack.Screen name="Login" component={Login}  options={{headerShown: true}}/>
-<<<<<<< HEAD
-        <Stack.Screen name="HomeScreen" component={MyTabs}  />
-=======
-        <Stack.Screen name="HomeScreen" component={MyTabs} />
->>>>>>> 2478f867c9d5cc0dfe578c1e8369879e6fac531a
+        <Stack.Screen name="Home" component={MyTabs}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
