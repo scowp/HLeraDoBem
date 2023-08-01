@@ -20,7 +20,7 @@ export default function Routes() {
         <Stack.Screen name="Cadastro2" component={CadastroEndereco} options={{headerShown: true}}/>
         <Stack.Screen name="Cadastro3" component={CadastroDados} options={{headerShown: true}}/>
         <Stack.Screen name="Login" component={Login}  options={{headerShown: true}}/>
-        <Stack.Screen name="Home" component={MyTabs} />
+        <Stack.Screen name="HomeScreen" component={MyTabs}  />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,16 +1,37 @@
 import * as React from 'react';
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
+import { useState, useEffect } from 'react';
 
 const Tab = createBottomTabNavigator();
 
 export default function Card(props) {
 
+    let estiloCard;
+    let estiloIcone;
+    let icone;
+
+    switch (props.tipo) {
+        case "ROUPA":
+            estiloCard = styles.cardAzul;
+            estiloIcone = styles.cardIconeAzul;
+            icone = "shirt";
+            break;
+        case "ALIMENTO":
+            estiloCard = styles.cardAmarelo;
+            estiloIcone = styles.cardIconeAmarelo;
+            icone = "restaurant";
+            break;
+        default:
+            break;
+    }
+
     return (
-        <View style={[props.titulo == "Campanha de roupas" ? styles.cardAzul : styles.cardAmarelo]}>
-            <View style={[props.titulo == "Campanha de roupas" ? styles.cardIconeAzul : styles.cardIconeAmarelo]}>
-                <Ionicons name={props.titulo == "Campanha de roupas" ? "shirt": "restaurant"} size={24} color="white" />
+        <TouchableOpacity>
+        <View style={estiloCard}>
+            <View style={estiloIcone}>
+                <Ionicons name={icone} size={24} color="white" />
             </View>
             <View style={styles.cardInfo} >
                 <Text style={styles.cardTitulo}>{props.titulo}</Text>
@@ -20,6 +41,7 @@ export default function Card(props) {
                 </View>
             </View>
         </View>
+    </TouchableOpacity>
     )
 
     // "#558CDE" "#2674E9"

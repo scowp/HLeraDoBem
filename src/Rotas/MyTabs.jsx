@@ -41,9 +41,7 @@ export default function MyTabs() {
                 tabBarInactiveTintColor: 'white',
             })}
         >
-            <Tab.Screen name="Pesquisa" component={Pesquisa} options={{
-                headerShown: false
-            }} />
+
             <Tab.Screen name="Home" component={Home} options={{
                 headerTitleStyle: {
                     color: "red",
@@ -52,6 +50,10 @@ export default function MyTabs() {
                     borderBottomWidth: 0,
                 }
             }} />
+            <Tab.Screen name="Pesquisa" component={Pesquisa} options={{
+                headerShown: false
+            }} />
+
             <Tab.Screen name="Ajustes" component={Ajustes} options={{
                 headerTitleStyle: {
                     color: "red",

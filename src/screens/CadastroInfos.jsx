@@ -1,8 +1,10 @@
-import { View, Text, Button, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, Button, StyleSheet, TextInput, TouchableOpacity, Alert } from "react-native";
+import { TextInputMask } from 'react-native-masked-text'
 import React from 'react';
 import Cadastro from "./Cadastro";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export default function CadastroInfos() {
+export default function CadastroInfos({ navigation }) {
 
     const [nome, setNome] = React.useState("");
     const [cpf, setCPF] = React.useState("");
@@ -10,16 +12,51 @@ export default function CadastroInfos() {
     const [dataNsc, setDataNsc] = React.useState("");
 
     const validarFormulario = () => {
-        if (nome === '' || cpf === '' || rg === '' || dataNsc === '') {
+        let error = false
+        if (nome === "" || cpf === "" || rg === "" || dataNsc === "") {
             Alert.alert('Erro', 'Por favor, preencha todos os campos');
-        } else {
-            Alert.alert('Sucesso', 'Formulário enviado com sucesso');
-            // Aqui você pode adicionar lógica adicional, como enviar os dados do formulário para um servidor
+            return false
         }
+        const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+        if (!cpfRegex.test(cpf)) {
+            Alert.alert('Erro', 'Por favor, digite o CPF corretamente');
+            return false;
+        }
+
+        // Expressão regular para validar data de nascimento (formato: dd/mm/aaaa)
+        const dataNascimentoRegex = /^\d{2}\/\d{2}\/\d{4}$/;
+        if (!dataNascimentoRegex.test(dataNsc)) {
+            Alert.alert('Erro', 'Por favor, digite a data de nascimento corretamente');
+            return false;
+        }
+        return !error
     };
 
+    const salvou = () => {
+        if (validarFormulario()) {
+            console.log("salvou")
+            return true
+        }
+    }
+
+    let objInfo ={
+        nome: nome,
+        cpf: cpf,
+        rg: rg,
+        dataNascimento: dataNsc
+    }
+
+    const storeData = async (value) => {
+        try {
+          const jsonValue = JSON.stringify(value)
+          await AsyncStorage.setItem('@info', jsonValue)
+        } catch (e) {
+          // saving error
+        }
+      }
+
     return (
-        <Cadastro proximaPagina="Cadastro2" titulo="Preencha as informações para entrar na plataforma.">
+        <Cadastro titulo="Preencha as informações para entrar na plataforma.">
             <Text style={styles.label}>Nome Completo</Text>
             <TextInput
                 style={styles.input}
@@ -28,7 +65,8 @@ export default function CadastroInfos() {
                 placeholder="Digite aqui..."
             />
             <Text style={styles.label}>CPF</Text>
-            <TextInput
+            <TextInputMask
+                type={'cpf'}
                 style={styles.input}
                 onChangeText={setCPF}
                 value={cpf}
@@ -42,12 +80,25 @@ export default function CadastroInfos() {
                 placeholder="Digite aqui..."
             />
             <Text style={styles.label}>Data de nascimento</Text>
-            <TextInput
+            <TextInputMask
+                type="custom"
+                options={{
+                    mask: '99/99/9999'
+                }}
                 style={styles.input}
                 onChangeText={setDataNsc}
                 value={dataNsc}
                 placeholder="Digite aqui..."
             />
+            <TouchableOpacity style={styles.button} onPress={async() => {
+                if (salvou()) {
+                    navigation.navigate("Cadastro2")
+                    await storeData(objInfo)
+
+                }
+            }}>
+                <Text style={{ color: "white", fontWeight: 600, fontSize: 16 }}>Avançar</Text>
+            </TouchableOpacity>
         </Cadastro>
     )
 }

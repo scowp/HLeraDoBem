@@ -3,8 +3,9 @@ import { View, Text, Button, StyleSheet, TextInput, TouchableOpacity } from "rea
 import { validarLogin } from '../context/integration/Login';
 import { listarUsuarios } from '../context/integration/Usuario';
 
-export default function Login({navigation}) {
+export default function Login({ navigation }) {
 
+    
     const [user, setUser] = React.useState("");
     const [senha, setSenha] = React.useState("");
 
@@ -29,8 +30,16 @@ export default function Login({navigation}) {
                 placeholder="Senha"
             />
 
-            <TouchableOpacity style={styles.button} onPress={async () => {console.log(await validarLogin(user, senha))}}>
-                    <Text style={{ color: "white", fontWeight: 600, fontSize: 16 }}>Entrar</Text>
+            <TouchableOpacity style={styles.button} onPress={async () => {
+                const validado = await validarLogin(user, senha)
+                if (validado.authorized){
+                    navigation.navigate("HomeScreen")
+                    console.log("entrou")
+                } else {
+                    console.log("não entrou")
+                }
+            }}>
+                <Text style={{ color: "white", fontWeight: 600, fontSize: 16 }}>Entrar</Text>
             </TouchableOpacity>
         </View>
     )
@@ -56,7 +65,7 @@ const styles = StyleSheet.create({
     label: {
         fontWeight: 200,
         fontSize: 16,
-        width: 300,   
+        width: 300,
     },
 
     input: {

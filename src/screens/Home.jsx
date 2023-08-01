@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import Ajustes from './Ajustes';
@@ -19,11 +19,11 @@ export default function Home() {
             </View>
             <View style={{marginBottom: 10}}>
                 <Text style={styles.titulo}>Campanhas disponíveis</Text>
-                <Card titulo="Campanha de roupas" value={0}/>
-                <Card titulo="Campanha de alimentos" value={0}/>
+                <Card titulo="Campanha de roupas" tipo="ROUPA" value={0}/>
+                <Card titulo="Campanha de alimentos" tipo="ALIMENTO" value={0}/>
             </View>
             <View style={{marginBottom: 10}}>
-                <Text style={styles.titulo}>Campanhas disponíveis</Text>
+                <Text style={styles.titulo}>Conheça também</Text>
                 <CardOng titulo="Hlera do bem"/>
             </View>
         </View>
